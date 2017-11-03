@@ -1,0 +1,4 @@
+---
+# vars file for ansible-yapkg
+yapkg_deb_names: '{{ yapkg_names }}'
+
