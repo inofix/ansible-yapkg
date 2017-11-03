@@ -1,0 +1,27 @@
+---
+# tasks file for ansible-yapkg
+- name: 'install {{ yapkg_group_name }}'
+  apt:
+    name: '{{ item }}'
+    update_cache: '{{ yapkg_update_cache }}'
+    cache_valid_time: '{{ yapkg_cache_valid_time }}'
+  with_items: '{{ yapkg_deb_names }}'
+  when:
+   - yapkg_default_release == ""
+   - yapkg_deb_names is iterable
+   - not yapkg_deb_names is string
+   - ansible_os_family == "Debian"
+
+- name: 'install {{ yapkg_group_name }}'
+  apt:
+    name: '{{ item }}'
+    default_release: '{{ yapkg_default_release }}'
+    update_cache: '{{ yapkg_update_cache }}'
+    cache_valid_time: '{{ yapkg_cache_valid_time }}'
+  with_items: '{{ yapkg_deb_names }}'
+  when:
+   - yapkg_default_release != ""
+   - yapkg_deb_names is iterable
+   - not yapkg_deb_names is string
+   - ansible_os_family == "Debian"
+
