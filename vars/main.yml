@@ -1,4 +1,17 @@
 ---
 # vars file for ansible-yapkg
-yapkg_deb_names: '{{ yapkg_names }}'
+
+# mandatory variable containing the packages to be installed
+yapkg_names: '{{ yapkg__names }}'
+
+# the name used for user feedback
+yapkg_task_group_name: '{{ yapkg__task_group_name | d(default__yapkg__task_group_name:) }}'
+
+# whether to try to download the latest archives
+yapkg_update_cache: '{{ yapkg__update_cache | d(default__yapkg__update_cache) }}'
+# how long the cache is considered valid before downloading the archives again
+yapkg_cache_valid_time: '{{ yapkg__cache_valid_time | d(default__yapkg__cache_valid_time) }}'
+
+# distro release to use
+yapkg_target_release: '{{ yapkg__target_release | d(default__yapkg__target_release) }}'
 
