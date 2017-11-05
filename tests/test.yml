@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - { role: ansible-yapkg, yapkg_names: [ less ] }
+    - { role: ansible-yapkg, yapkg__names: [ less ] }

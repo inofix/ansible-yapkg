@@ -1,6 +1,6 @@
 ---
 # defaults file for ansible-yapkg
-yapkg_update_cache: yes
-yapkg_default_release: ''
-yapkg_cache_valid_time: 3600
-yapkg_group_name: 'packages'
+default__yapkg__update_cache: yes
+default__yapkg__target_release: ''
+default__yapkg__cache_valid_time: 3600
+default__yapkg__task_group_name: 'packages'
