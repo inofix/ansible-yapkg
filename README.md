@@ -27,6 +27,12 @@ Sure this role may change in the future, but we will only expand features to not
 If radical changes should become necessary, a new role will be created, probably with an 'ng' or version suffix...
 
 
+Idea
+----
+
+In the inventory you can group the hosts based on certain applications and distros. The playbook will then map the hosts in the groups to the actual name of the package to be installed and pass it on to this role. The role will then install the package.
+
+
 Installation
 ------------
 
@@ -40,11 +46,10 @@ Requirements
 Role Variables
 --------------
 
-* yapkg\_names - mandatory, array
- * yapkg\_deb\_names - alternative for packages unique to debian, used as soon as other targets will be supported
-* yapkg\_update\_cache - optional, default=yes
-* yapkg\_cache\_valid\_time - optional, default=3600
-* yapkg\_group\_name - optional, default='packages'
+* yapkg\_\_names - mandatory, string or array of strings with packages to install, no default
+* yapkg\_\_update\_cache - optional, boolean, default=yes
+* yapkg\_\_cache\_valid\_time - optional, number of seconds, default=3600
+* yapkg\_\_task\_group\_name - optional, string name for the group of packages to be installed, default='packages'
 
 Dependencies
 ------------
@@ -52,14 +57,14 @@ Dependencies
 * Currently only "Debian" is supported
 * It will test for the OS/Distro, namely
  * 'ansible\_os\_family'
-* playbook must provide a list (array) of packages to be installed ('yapkg\_names', or 'yapkg\_deb\_names')
+* playbook must provide a list (array) of packages to be installed ('yapkg\_\_names')
 
 Example Playbook
 ----------------
 
     - hosts: servers
       roles:
-         - { role: inofix.ansible-yapkg, yapkg_names: [ foo, bar ] }
+         - { role: inofix.ansible-yapkg, yapkg__names: [ foo, bar ] }
 
 License
 -------
