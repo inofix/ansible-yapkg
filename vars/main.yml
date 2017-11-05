@@ -5,7 +5,7 @@
 yapkg_names: '{{ yapkg__names }}'
 
 # the name used for user feedback
-yapkg_task_group_name: '{{ yapkg__task_group_name | d(default__yapkg__task_group_name:) }}'
+yapkg_task_group_name: '{{ yapkg__task_group_name | d(default__yapkg__task_group_name) }}'
 
 # whether to try to download the latest archives
 yapkg_update_cache: '{{ yapkg__update_cache | d(default__yapkg__update_cache) }}'
