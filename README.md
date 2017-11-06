@@ -29,13 +29,13 @@ If radical changes should become necessary, a new role will be created, probably
 Idea
 ----
 
-In the inventory you can group the hosts based on certain applications and distros. The playbook will have to map the hosts in the groups to the actual name of the package to be installed and pass it on to this role. The role will then install the package.
+In the inventory you can group the hosts based on certain applications and distros. The playbook will have to map the hosts in the groups to the actual name of the package to be installed and pass it on to this role. The role will then install the package(s).
 
 
 Installation
 ------------
 
- # ansible-galaxy install inofix.ansible-yapkg
+ # ansible-galaxy install inofix.yapkg
 
 Requirements
 ------------
@@ -63,7 +63,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: inofix.ansible-yapkg, yapkg__names: [ foo, bar ] }
+         - { role: inofix.yapkg, yapkg__names: [ foo, bar ] }
 
 License
 -------
