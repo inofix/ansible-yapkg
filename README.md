@@ -9,9 +9,8 @@ Why we do not use one of the existing roles?
 * This role will be used by [maestro](https://github.com/inofix/maestro) and must follow the logic used there. (Of course, the role can be used without maestro..)
 
 A note on the only mandatory variable: You need to tell what packages you want to get installed.
-The main variable is 'yapkg\_names' and takes a list of package names. As they might be called different
-on different distributions, you can distinguish between the targets as follows. Currently supported are:
-'yapkg\_deb\_names' (Debian).
+The variable is 'yapkg\_\_names' and takes a list of package names.
+
 
 State
 -----
@@ -30,13 +29,13 @@ If radical changes should become necessary, a new role will be created, probably
 Idea
 ----
 
-In the inventory you can group the hosts based on certain applications and distros. The playbook will then map the hosts in the groups to the actual name of the package to be installed and pass it on to this role. The role will then install the package.
+In the inventory you can group the hosts based on certain applications and distros. The playbook will have to map the hosts in the groups to the actual name of the package to be installed and pass it on to this role. The role will then install the package(s).
 
 
 Installation
 ------------
 
- # ansible-galaxy install inofix.ansible-yapkg
+ # ansible-galaxy install inofix.yapkg
 
 Requirements
 ------------
@@ -64,7 +63,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: inofix.ansible-yapkg, yapkg__names: [ foo, bar ] }
+         - { role: inofix.yapkg, yapkg__names: [ foo, bar ] }
 
 License
 -------
