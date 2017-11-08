@@ -1,3 +1,6 @@
+[![Travis CI](https://img.shields.io/travis/inofix/ansible-yapkg.svg?style=flat)](http://travis-ci.org/inofix/ansible-yapkg)
+
+
 YAPKG
 =====
 
