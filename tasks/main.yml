@@ -1,6 +1,7 @@
 ---
 # tasks file for ansible-yapkg
 - name: 'install {{ yapkg_task_group_name }}'
+  become: True
   apt:
     name: '{{ item }}'
     update_cache: '{{ yapkg_update_cache }}'
@@ -10,9 +11,10 @@
    - yapkg_target_release == ""
    - yapkg_names is iterable
    - not yapkg_names is string
-   - ansible_os_family == "Debian"
+   - ansible_pkg_mgr == "apt"
 
 - name: 'install {{ yapkg_task_group_name }}'
+  become: True
   apt:
     name: '{{ item }}'
     default_release: '{{ yapkg_target_release }}'
@@ -23,5 +25,5 @@
    - yapkg_target_release != ""
    - yapkg_names is iterable
    - not yapkg_names is string
-   - ansible_os_family == "Debian"
+   - ansible_pkg_mgr == "apt"
 

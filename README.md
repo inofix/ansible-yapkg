@@ -18,15 +18,14 @@ The variable is 'yapkg\_\_names' and takes a list of package names.
 State
 -----
 
-UNSTABLE! We are just migrating from zwischenloesung.yapkg.
-
+Stable.
 
 Promise
 -------
 
 Sure this role may change in the future, but we will only expand features to not break backwards compatibility.
 
-If radical changes should become necessary, a new role will be created, probably with an 'ng' or version suffix...
+If radical changes should become necessary, a new role will be created, probably with a version suffix...
 
 
 Idea
@@ -43,23 +42,31 @@ Installation
 Requirements
 ------------
 
-* Ansible >2.0
+* Ansible >=2.0
 
 Role Variables
 --------------
 
-* yapkg\_\_names - mandatory, string or array of strings with packages to install, no default
+* yapkg\_\_list - optional, an array of strings with package name keys to be resolved against os\_\_pkg\_name
+* yapkg\_\_names - optional, string or array of strings with package names to install, no default
 * yapkg\_\_update\_cache - optional, boolean, default=yes
 * yapkg\_\_cache\_valid\_time - optional, number of seconds, default=3600
 * yapkg\_\_task\_group\_name - optional, string name for the group of packages to be installed, default='packages'
+* os\_\_pkg\_name - optional (needed together with yapkg\_\_list), containing package names per os/distro e.g. (incl. some flame-waring)
+ os\_\_pkg\_name:
+   jinja2:
+     debian_stretch: "python3-jinja2"
+   myfavoriteeditor:
+     debian: "vim"
 
 Dependencies
 ------------
 
 * Currently only "Debian" is supported
 * It will test for the OS/Distro, namely
- * 'ansible\_os\_family'
-* playbook must provide a list (array) of packages to be installed ('yapkg\_\_names')
+ * 'ansible\_distribution'
+ * 'ansible\_distribution\_release'
+ * 'ansible\_pkg\_mgr'
 
 Example Playbook
 ----------------

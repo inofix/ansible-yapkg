@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - { role: ansible-yapkg, yapkg__names: [ 'less', 'htop' ] }
+    - { role: ansible-yapkg, yapkg__names: [ 'less', 'htop' ], os__pkg_name: { "foo": { "ubuntu": [ "vim" ] } }, yapkg__list: [ 'foo' ] }
