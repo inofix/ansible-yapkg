@@ -42,7 +42,7 @@ Installation
 Requirements
 ------------
 
-* Ansible >=2.2.1.0 (not tested below..)
+* Ansible >=2.0
 
 Role Variables
 --------------
