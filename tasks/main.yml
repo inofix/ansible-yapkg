@@ -3,10 +3,9 @@
 - name: 'install {{ yapkg_task_group_name }}'
   become: True
   apt:
-    name: '{{ item }}'
+    name: '{{ yapkg_names | reject("equalto", "") | list() }}'
     update_cache: '{{ yapkg_update_cache }}'
     cache_valid_time: '{{ yapkg_cache_valid_time }}'
-  with_items: '{{ yapkg_names | reject("equalto", "") | list() }}'
   when:
    - yapkg_target_release == ""
    - yapkg_names is iterable
@@ -16,11 +15,10 @@
 - name: 'install {{ yapkg_task_group_name }}'
   become: True
   apt:
-    name: '{{ item }}'
+    name: '{{ yapkg_names | reject("equalto", "") | list() }}'
     default_release: '{{ yapkg_target_release }}'
     update_cache: '{{ yapkg_update_cache }}'
     cache_valid_time: '{{ yapkg_cache_valid_time }}'
-  with_items: '{{ yapkg_names | reject("equalto", "") | list() }}'
   when:
    - yapkg_target_release != ""
    - yapkg_names is iterable
